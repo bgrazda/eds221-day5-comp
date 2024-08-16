@@ -43,16 +43,17 @@ Add line-by-line comments wheres prompted in the code below, explaining what eac
 # ------ WHAT HAPPENS HERE? ------ #
 # ------ comment line-by-line ---- #
 
-# The line below...
+# The line below creates a time vector of 8 years
 time_yr <- seq(from = 0, to = 8, by = 1)
 
-# The line below...
+
+# The line below creates an empty matrix to return the population at each life stage at each year
 proj_year <- matrix(ncol = length(fish_year0), nrow = length(time_yr))
 
-# The line below...
+# The line below storing the initial population in the first row
 proj_year[1, ] <- fish_year0
 
-# The for loop below...
+# The for loop below storing the population at each year following the initial population row by row using dot product (using matrix and multiplying the previous proj year)
 for (i in 2:length(time_yr)) {
   proj_year[i,] <- fish_leslie %*% proj_year[i-1,]
 }
